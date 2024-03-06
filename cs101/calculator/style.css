@@ -1,0 +1,30 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 70%;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    justify-items: end;
+}
+
+.row {
+    display: flex;
+}
+
+.button {
+    border: none;
+    font-size: 3ch;
+    width: 25%;
+    margin: none;
+    padding: none;
+}
