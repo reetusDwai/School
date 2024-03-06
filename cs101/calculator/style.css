@@ -1,6 +1,7 @@
 #main {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 30%;
     height: 70%;
     position: absolute;
@@ -8,6 +9,12 @@
     top: 15%;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+#display {
+    font-size: 3ch;
+    width: 100%;
+    text-align: center;
 }
 
 #buttons {
@@ -23,7 +30,7 @@
 
 .button {
     border: none;
-    font-size: 3ch;
+    font-size: 6ch;
     width: 25%;
     margin: none;
     padding: none;

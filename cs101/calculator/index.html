@@ -8,35 +8,36 @@
 
 <body>
     <div id='main'>
-        <h3 id='display'>Display</h3>
+        <br>
+        <span id='display'>Display</span>
         <div id='buttons'>
             <div class='row'>
-                <button id='1' class='button'>1</button>
-                <button id='2' class='button'>2</button>
-                <button id='3' class='button'>3</button>
-                <button id='+' class='button'>+</button>
+                <button id='1' class='button' onclick="addNumberToBuff">1</button>
+                <button id='2' class='button' onclick="addNumberToBuff">2</button>
+                <button id='3' class='button' onclick="addNumberToBuff">3</button>
+                <button id='+' class='button' onclick="addOperator">+</button>
             </div>
             <div class='row'>
-                <button id='4' class='button'>4</button>
-                <button id='5' class='button'>5</button>
-                <button id='6' class='button'>6</button>
-                <button id='-' class='button'>-</button>
+                <button id='4' class='button' onclick="addNumberToBuff">4</button>
+                <button id='5' class='button' onclick="addNumberToBuff">5</button>
+                <button id='6' class='button' onclick="addNumberToBuff">6</button>
+                <button id='-' class='button' onclick="addOperator">-</button>
             </div>
             <div class='row'>
-                <button id='7' class='button'>7</button>
-                <button id='8' class='button'>8</button>
-                <button id='9' class='button'>9</button>
-                <button id='*' class='button'>*</button>
+                <button id='7' class='button' onclick="addNumberToBuff">7</button>
+                <button id='8' class='button' onclick="addNumberToBuff">8</button>
+                <button id='9' class='button' onclick="addNumberToBuff">9</button>
+                <button id='*' class='button' onclick="addOperator">*</button>
             </div>
             <div class='row'>
                 <button id='.' class='button'>.</button>
-                <button id='0' class='button'>0</button>
-                <button id='enter' class='button'>=</button>
-                <button id='/' class='button'>/</button>
+                <button id='0' class='button' onclick="addNumberToBuff">0</button>
+                <button id='enter' class='button' onclick="equate">=</button>
+                <button id='/' class='button' onclick="addOperator">/</button>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
