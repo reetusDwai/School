@@ -1,14 +1,18 @@
-let buff = [];
-let op = "";
+let input = "";
+let display = document.getElementById("display");
 
-function addNumberToBuff() {
-    alert("Adding number")
-}
-
-function setOperator() {
-    alert("Adding operator")
+function addInput(button) {
+    input += button.value;
+    display.innerText = input;
 }
 
 function equate() {
-    "Equating"
+    let output = eval(input);
+    display.innerText = output;
+    input = "";
+}
+
+function clr() {
+    input = "";
+    display.innerText = "";
 }

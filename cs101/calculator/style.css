@@ -3,12 +3,14 @@
     flex-direction: column;
     justify-content: space-between;
     width: 30%;
-    height: 70%;
+    height: 80%;
     position: absolute;
     left: 35%;
-    top: 15%;
-    border: 1px solid black;
+    top: 10%;
+    border: 4px solid black;
     border-radius: 10px;
+    background-clip: padding-box;
+    z-index: 2;
 }
 
 #display {
@@ -20,18 +22,30 @@
 #buttons {
     display: flex;
     flex-direction: column;
-    justify-self: end;
-    justify-items: end;
 }
 
 .row {
     display: flex;
 }
 
+#row1 {
+    border-top: 3px solid black;
+}
+
 .button {
     border: none;
+    background-color: #A9A9A9;
     font-size: 6ch;
     width: 25%;
     margin: none;
     padding: none;
+    z-index: 1;
+}
+
+#clear {
+    width: 75%;
+}
+
+button:hover {
+    background-color: #DCDCDC;
 }

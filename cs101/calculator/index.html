@@ -11,29 +11,33 @@
         <br>
         <span id='display'>Display</span>
         <div id='buttons'>
-            <div class='row'>
-                <button id='1' class='button' onclick="addNumberToBuff">1</button>
-                <button id='2' class='button' onclick="addNumberToBuff">2</button>
-                <button id='3' class='button' onclick="addNumberToBuff">3</button>
-                <button id='+' class='button' onclick="addOperator">+</button>
+            <div class='row' id='row1'>
+                <button id='1' class='button' value='1' onclick="addInput(this)">1</button>
+                <button id='2' class='button' value='2' onclick="addInput(this)">2</button>
+                <button id='3' class='button' value='3' onclick="addInput(this)">3</button>
+                <button id='+' class='button' value='+' onclick="addInput(this)">+</button>
             </div>
             <div class='row'>
-                <button id='4' class='button' onclick="addNumberToBuff">4</button>
-                <button id='5' class='button' onclick="addNumberToBuff">5</button>
-                <button id='6' class='button' onclick="addNumberToBuff">6</button>
-                <button id='-' class='button' onclick="addOperator">-</button>
+                <button id='4' class='button' value='4' onclick="addInput(this)">4</button>
+                <button id='5' class='button' value='5' onclick="addInput(this)">5</button>
+                <button id='6' class='button' value='6' onclick="addInput(this)">6</button>
+                <button id='-' class='button' value='-' onclick="addInput(this)">-</button>
             </div>
             <div class='row'>
-                <button id='7' class='button' onclick="addNumberToBuff">7</button>
-                <button id='8' class='button' onclick="addNumberToBuff">8</button>
-                <button id='9' class='button' onclick="addNumberToBuff">9</button>
-                <button id='*' class='button' onclick="addOperator">*</button>
+                <button id='7' class='button' value='7' onclick="addInput(this)">7</button>
+                <button id='8' class='button' value='8' onclick="addInput(this)">8</button>
+                <button id='9' class='button' value='9' onclick="addInput(this)">9</button>
+                <button id='*' class='button' value='*' onclick="addInput(this)">*</button>
             </div>
             <div class='row'>
-                <button id='.' class='button'>.</button>
-                <button id='0' class='button' onclick="addNumberToBuff">0</button>
-                <button id='enter' class='button' onclick="equate">=</button>
-                <button id='/' class='button' onclick="addOperator">/</button>
+                <button id='.' class='button' value='.' onclick="addInput(this)">.</button>
+                <button id='0' class='button' value='0' onclick="addInput(this)">0</button>
+                <button id='enter' class='button' onclick="equate()">=</button>
+                <button id='/' class='button' value='/' onclick="addInput(this)">/</button>
+            </div>
+            <div class="row">
+                <button id="clear" class="button" onclick="clr()">Clear</button>
+                <button id='%' class='button' value='%' onclick="addInput(this)">%</button>
             </div>
         </div>
     </div>
