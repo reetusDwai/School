@@ -7,4 +7,4 @@ main.o:main.c
 	gcc -c main.c
 
 clean:
-	rm main.o stack.o prog1
+	rm main.o stack.o prog2

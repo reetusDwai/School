@@ -17,7 +17,7 @@ void push(StackPtr sp,datatype input) {
 }
 datatype pop(StackPtr sp) {
     if (empty(sp)) return R;
-    datatype output = sp ->StackArray[sp->top];
+    datatype output = sp -> StackArray[sp->top];
     --(sp->top);
     return output;
 }
