@@ -3,12 +3,15 @@
 #define MaxQ 12
 
 typedef struct {
-  int a;
+    int id;
+    char Fname[20];
+    char Lname[20];
+    int grade1, grade2, grade3;
 } datatype;
 
 typedef struct {
-  int head, tail;
-  datatype QA[MaxQ];
+    int head, tail;
+    datatype QA[MaxQ];
 } QType, *Queue;
 
 Queue initQueue();
