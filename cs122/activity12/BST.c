@@ -55,3 +55,11 @@ void printTree(int level, NodePtr np){
         printTree(++level, np->right);
     }
 }
+
+void count(int level, NodePtr np){
+    if(np){
+        printf("%*c%d %s %f %d\n",level,' ', np->key, np->value.productName,np->value.price, np->value.qty);
+        printTree(++level, np->left);
+        printTree(++level, np->right);
+    }
+}
