@@ -25,10 +25,9 @@ NodePtr insert(NodePtr x,datatype1 inskey, datatype2 value)
 	if(x==NULL) return createNewNode(inskey,value);
 	if(inskey<x->key) x->left=insert(x->left, inskey, value);
 	else if(inskey>x->key) x->right=insert(x->right,inskey, value);
-	else if(inskey=x->key) x->value=value;
+	else if(inskey==x->key) x->value=value;
 	return x;
 }	
-
 
 
 NodePtr createNewNode(datatype1 insKey, datatype2 value){
