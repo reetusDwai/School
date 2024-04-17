@@ -1,0 +1,1 @@
+int hashISBN(int);
