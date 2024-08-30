@@ -1,5 +1,5 @@
 BinaryTree:main.o BST.o
-	gcc -o BST main.o BST.o
+	gcc -o BinaryTree main.o BST.o
 
 main.o:main.c
 	gcc -c main.c

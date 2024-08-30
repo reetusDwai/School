@@ -1,1 +1,0 @@
-select Pname from company.Project
