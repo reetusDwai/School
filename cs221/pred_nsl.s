@@ -1,7 +1,7 @@
-# echo_dec.s
+# pred_nsl.s
 # Read one character from stdio, decrement one to the ASCII value, and write
 # it on stdout.
-# gcc -nostdlib -no-pie echo_dec.s -o echo_dec
+# gcc -nostdlib -no-pie pred_nsl.s -o pred_nsl 
 # this line prevents a loader warning
 .section .note.GNU-stack,"",@progbits
 .section .data
