@@ -17,22 +17,37 @@ _start:
     movq $0, %rax # syscall number for sys_read (0)
     movq $0, %rdi # file descriptor for stdin (0)
     movq $buffer, %rsi # pointer to the buffer
-    movq $1, %rdx # number of bytes to read
+    movq $2, %rdx # number of bytes to read
     syscall
 
-    # Add 1 to the ASCII value of the character
-    movb buffer, %al # Load the byte from buffer into AL
-    decb %al # Decrement the ASCII value by 1
-    movb %al, buffer # Store the result back to buffer
+    # Convert buffer into a number
+    movzbw buffer, %ax # Loads the first digit(10s place) into AX 
+    # movzbw means move a byte into a word with higher order bits in the word being zero
+    sub $'0', %ax # Converts the ascii to an int by subtracting the ascii character 0
+    movw $10, %bx # Puts 10 into BX for multiplying
+    # Multiplies AX by BX and stores it in AX
+    mulw %bx
+
+    # Convert second byte to a number
+    # Loads the second digit into BX
+    movzbw buffer+1, %bx
+    sub $'0', %bx
+    addw %bx, %ax # Adds the second digit to the first digit giving us the correct digit
+    movw %ax, buffer # Moves number back to buffer
 
     # compute f(x)
-
+    movw buffer, %ax # Loads the bytes from buffer into AX
+    movw $27, %bx # Puts 27 into BX so that we can multiply
+    # Multiplies AX by BX and stores it in AX
+    mulw %bx 
+    addw $17, %ax # Adds 17 to AX
+    movw %ax, buffer # Store result back into buffer
 
     # Write the modified character to stdout
     movq $1, %rax # syscall number for sys_write (1)
     movq $1, %rdi # file descriptor for stdout (1)
     movq $buffer, %rsi # pointer to the buffer
-    movq $1, %rdx # number of bytes to write
+    movq $4, %rdx # number of bytes to write
     syscall
     # Exit the program
     movq $60, %rax # syscall number for sys_exit (60)
