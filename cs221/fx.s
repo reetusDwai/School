@@ -3,23 +3,25 @@
 # Compute 27x + 17, where x is the provided integer
 # Print the input value, the result in decimal and hexadecimal like this:
 # x = 19 : f(x) = 530 or 0x212
-# gcc -nostdlib -no-pie fx.s -o fx 
+# gcc -no-pie fx.s -o fx 
 # this line prevents a loader warning
 .section .note.GNU-stack,"",@progbits
 .section .data
     .comm buffer, 4 # Allocate 4 byte for the result of the function
-    format: .string "x = %= %04hx\n\0"
+format: .string "x = %02s : f(x) = %04hi or %04hx\n\0"
 .section .text
-    .global _start
+    .global main 
 # This program does not use stdlib. The linker recognizes _start
 # as the beginning of execution.
-_start:
+main:
     # Read two characters from stdin
     movq $0, %rax # syscall number for sys_read (0)
     movq $0, %rdi # file descriptor for stdin (0)
     movq $buffer, %rsi # pointer to the buffer
     movq $2, %rdx # number of bytes to read
     syscall
+    # store the starting input
+    movzx buffer, %esi
 
     # Convert buffer into a number
     movzbw buffer, %ax # Loads the first digit(10s place) into AX 
@@ -44,12 +46,24 @@ _start:
     addw $17, %ax # Adds 17 to AX
     movw %ax, buffer # Store result back into buffer
 
-    # Write the modified character to stdout
-    movq $1, %rax # syscall number for sys_write (1)
-    movq $1, %rdi # file descriptor for stdout (1)
-    movq $buffer, %rsi # pointer to the buffer
-    movq $4, %rdx # number of bytes to write
-    syscall
+    # save the callee of main, call to printf will wipe it out
+    push %rbp
+
+    # loads effective address of format string
+    # into first argument register
+    lea format, %rdi
+    # move value we want to print into the
+    # all the arguments
+    movl buffer, %edx
+    #movl buffer, $ecx
+    
+    # calling printf
+    call printf
+
+    # Restore the callee that was overwritten by
+    # call to printf
+    pop %rbp
+    ret
 
     # Exit the program
     movq $60, %rax # syscall number for sys_exit (60)
