@@ -8,7 +8,7 @@
 .section .note.GNU-stack,"",@progbits
 .section .data
     .comm buffer, 4 # Allocate 4 byte for the result of the function
-format: .string "x = %02s : f(x) = %04hi or %04hx\n\0"
+format: .string "x = %d : f(x) = %d or 0x%x\n\0"
 .section .text
     .global main 
 # This program does not use stdlib. The linker recognizes _start
@@ -20,8 +20,6 @@ main:
     movq $buffer, %rsi # pointer to the buffer
     movq $2, %rdx # number of bytes to read
     syscall
-    # store the starting input
-    movzx buffer, %esi
 
     # Convert buffer into a number
     movzbw buffer, %ax # Loads the first digit(10s place) into AX 
@@ -37,6 +35,9 @@ main:
     subw $'0', %bx
     addw %bx, %ax # Adds the second digit to the first digit giving us the correct digit
     movw %ax, buffer # Moves number back to buffer
+
+    # store the starting input
+    movzx buffer, %esi
 
     # compute f(x)
     movw buffer, %ax # Loads the bytes from buffer into AX
@@ -55,7 +56,7 @@ main:
     # move value we want to print into the
     # all the arguments
     movl buffer, %edx
-    #movl buffer, $ecx
+    movl buffer, %ecx
     
     # calling printf
     call printf
