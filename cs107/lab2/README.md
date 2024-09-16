@@ -1,0 +1,7 @@
+- **Purpose:**
+    - pay.py calculates the pay that an employee should get depending on various variables
+    - calculator.py given a number and a function to use, calculates that number using that function
+- **Conclusion:**
+    - I learn about the match statement, which is new in python 3.10 and above
+    - Didn't encounter any problems
+    - My code could be more commented and in functions
