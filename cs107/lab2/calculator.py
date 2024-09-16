@@ -1,4 +1,4 @@
 # Complete the comments below
-# Name:
+# Name: Kalem Smith
 # Assignment: Lab 2, Exercise 2: calculator.py
-# Date:
+# Date: 9/15/24
