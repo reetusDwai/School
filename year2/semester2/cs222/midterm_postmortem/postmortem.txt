@@ -1,0 +1,91 @@
+Matching:
+
+3  -> M (I-node 2 is the the root directory)
+6  -> S (malloc using first fit to determine which block to use)
+7  -> P (The program break is the end of the heap)
+9  -> T (chown can change the ownership of the group)
+11 -> N (umask sets the permissions for when files are created)
+12 -> Q (not sure, process of elimination)
+13 -> E (because the free blocks are "coalesced" into the free block list)
+14 -> D (the free command frees up memory)
+18 -> J (you use fork to make processes)
+
+Multiple choice:
+
+11 -> D (read returns zero when it is done aka, at the end of the file)
+
+Short Answer:
+
+2:
+1. return from main / use exit()
+2. use a signal
+3. turn off the machine / system crash
+4. call _exit system call
+
+This is what the notes say ^
+
+Programming:
+
+```
+function count_file_types(directory_path):
+    // Open the directory using open()
+    dir_fd = open(directory_path, O_RDONLY | O_DIRECTORY)
+    if dir_fd < 0:
+        return error
+    
+    // Allocate a buffer for reading directory entries
+    buffer = allocate memory for directory entries
+    
+    // Initialize counters
+    dir_count = 0
+    file_count = 0
+    symlink_count = 0
+    
+    // Read directory entries using getdents() in a loop
+    while bytes_read = getdents(dir_fd, buffer):
+        if bytes_read < 0:
+            return error
+        
+        for each entry in buffer:
+            // Skip "." and ".."
+            if entry.name == "." or entry.name == "..":
+                continue
+            
+            // Get file status using fstatat()
+            if fstatat(dir_fd, entry.name, &stat_buf, AT_SYMLINK_NOFOLLOW) < 0:
+                continue
+            
+            // Classify file type based on stat_buf.st_mode
+            if S_ISDIR(stat_buf.st_mode):
+                dir_count += 1
+            else if S_ISREG(stat_buf.st_mode):
+                file_count += 1
+            else if S_ISLNK(stat_buf.st_mode):
+                symlink_count += 1
+    
+    // Close directory
+    close(dir_fd)
+    
+    return (dir_count, file_count, symlink_count)
+```
+
+-------------------------------------------------
+
+Part 2.
+
+Don't know what I would have liked to see but I can say that I would have liked less ambiguity since free, malloc, heap, and free blocks are all very closely related.
+
+
+Part 3 and 4.
+
+Something on i-nodes
+
+Something on man pages
+
+Something on parent/child
+
+Something on permissions
+
+Something on the kernel
+
+Something on file io
